@@ -579,3 +579,15 @@ footer p {
         letter-spacing: 4px;
     }
 }
+
+/* Seleccionamos específicamente el h2 dentro de about-text */
+.about-text h2 {
+    font-size: 1.8rem;
+    /* 1. Hazlo más pequeño (ajusta el número si lo quieres más o menos chico) */
+    line-height: 1.3;
+
+    /* 2. Truco clave: Limita el ancho a aprox 15 caracteres para forzar el salto de línea */
+
+    /* Opcional: Para asegurar que quede bonito y no corte palabras a la mitad */
+    overflow-wrap: break-word;
+}
