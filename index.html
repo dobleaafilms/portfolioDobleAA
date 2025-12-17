@@ -38,11 +38,11 @@
             </div>
 
             <div class="about-text" data-aos="fade-left">
-                <h2>NO HAGO FOTOS,<br> INMORTALIZO MOMENTOS</h2>
+                <h2>NO HAGO FOTOS<br> INMORTALIZO MOMENTOS</h2>
                 <p class="bio-text">
                     Me llamo <strong>Alba</strong>. Me fascina cazar esos segundos que ya no vuelven, pero que, además
-                    de permanecer
-                    siempre en vuestra memoria, yo os ofrezco la posibilidad de poder verlos de nuevo una y otra vez.
+                    de permanecer siempre en vuestra memoria, yo os ofrezco la posibilidad de poder verlos de nuevo una
+                    y otra vez.
                 </p>
                 <p class="bio-text">
                     Lo mío es capturar la risa floja, la mirada cómplice y el caos bonito. Ya sea cámara en mano o
@@ -61,15 +61,23 @@
                     <h3>Bodas</h3>
                     <p>Sin guiones. Solo vosotros disfrutando de un gran día.</p>
                 </div>
+
                 <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fas fa-camera-retro"></i>
                     <h3>Eventos & Social</h3>
-                    <p>Comuniones, bautizos, eventos, conciertos... ¡¡Un sin fin de opciones a tu disposición!!</p>
+                    <p>Comuniones, bautizos, eventos, conciertos... ¡Un sin fin de opciones!</p>
                 </div>
+
                 <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-magic"></i>
                     <h3>Edición High-End</h3>
-                    <p>Retoque digital, color grading, edición más clásica... Me adapto a cualquier formato que necesites.</p>
+                    <p>Retoque digital, color grading, edición clásica... Me adapto a todo.</p>
+                </div>
+
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-home"></i>
+                    <h3>Inmobiliaria</h3>
+                    <p>Fotografía de interiores y arquitectura para vender o alquilar mejor.</p>
                 </div>
             </div>
         </div>
@@ -110,24 +118,28 @@
         </div>
     </section>
 
-    <section class="container">
-        <h2 data-aos="fade-right">La Magia de la Edición</h2>
+    <section class="container" id="edicion">
+        <h2 data-aos="fade-right">Edición</h2>
         <p style="margin-bottom: 20px; opacity: 0.7;">Desliza para ver el retoque</p>
 
         <div class="comparison-slider" data-aos="zoom-in">
             <div class="image-wrapper before-image">
-                <img src="imagenes/antes.webp"
-                    alt="Antes">
+                <img id="imgBefore" src="imagenes/antes.webp" alt="Antes">
                 <span class="label">Original</span>
             </div>
             <div class="image-wrapper after-image">
-                <img src="imagenes/despues.webp"
-                    alt="Después">
+                <img id="imgAfter" src="imagenes/despues.webp" alt="Después">
                 <span class="label">Editada</span>
             </div>
             <input type="range" min="0" max="100" value="50" class="slider" id="sliderRange">
             <div class="slider-line"></div>
             <div class="slider-button"><i class="fas fa-arrows-alt-h"></i></div>
+        </div>
+
+        <div class="slider-controls" data-aos="fade-up">
+            <button class="nav-btn" onclick="prevSlide()"><i class="fas fa-chevron-left"></i> Anterior</button>
+            <span id="slide-counter">1 / 3</span>
+            <button class="nav-btn" onclick="nextSlide()">Siguiente <i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
