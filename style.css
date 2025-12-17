@@ -25,10 +25,12 @@ h3 {
     font-family: 'Playfair Display', serif;
 }
 
+/* --- HERO SECTION --- */
 .hero {
     height: 100vh;
     background: url('imagenes/fondo-inicio.webp') no-repeat center center/cover;
     background-attachment: fixed;
+    /* En PC fijo, en móvil lo cambiamos abajo */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,6 +93,7 @@ h3 {
     margin: 20px auto;
 }
 
+/* --- BOTONES --- */
 .btn {
     position: relative;
     padding: 15px 40px;
@@ -113,6 +116,7 @@ h3 {
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
+/* --- CONTENEDORES --- */
 .container {
     padding: 80px 20px;
     max-width: 1000px;
@@ -128,9 +132,11 @@ h3 {
     color: #bbb;
 }
 
+/* --- SERVICIOS (GRID BASE PARA MÓVIL) --- */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* POR DEFECTO (Móvil): 1 columna */
+    grid-template-columns: 1fr;
     gap: 30px;
     margin-top: 40px;
 }
@@ -167,6 +173,7 @@ h3 {
     color: #888;
 }
 
+/* --- TÍTULOS --- */
 h2 {
     font-size: 3rem;
     margin-bottom: 50px;
@@ -199,8 +206,10 @@ h2::after {
     }
 }
 
+/* --- GALERÍA (BASE PARA PC) --- */
 .gallery {
     column-count: 3;
+    /* En PC 3 columnas */
     column-gap: 20px;
 }
 
@@ -236,6 +245,7 @@ h2::after {
     transform: scale(1.1);
 }
 
+/* --- SLIDER COMPARACIÓN --- */
 .comparison-slider {
     position: relative;
     width: 100%;
@@ -328,17 +338,72 @@ h2::after {
     pointer-events: none;
 }
 
+/* --- VIDEOS --- */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.video-item iframe {
-    border-radius: 5px;
-    height: 250px;
+.video-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
+.video-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.video-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+    filter: brightness(0.8);
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(226, 154, 60, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.video-link:hover img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+.video-link:hover .play-icon {
+    background: var(--accent);
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Corrección Zoom para video 1 */
+.fix-zoom img {
+    transform: scale(1.35);
+    transform-origin: center;
+}
+
+/* --- SOBRE MÍ (LAYOUT) --- */
 .about-wrapper {
     display: flex;
     align-items: center;
@@ -390,6 +455,7 @@ h2::after {
     margin-bottom: 20px;
 }
 
+/* --- CONTROLES SLIDER --- */
 .slider-controls {
     display: flex;
     justify-content: center;
@@ -427,10 +493,7 @@ h2::after {
     letter-spacing: 2px;
 }
 
-.services-grid {
-    grid-template-columns: 1fr 1fr;
-}
-
+/* --- FOOTER GENERAL --- */
 footer {
     background-color: #050505;
     border-top: 2px solid var(--accent);
@@ -528,7 +591,6 @@ footer {
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
-
 .footer-brand {
     text-align: center;
     margin-bottom: 30px;
@@ -550,7 +612,6 @@ footer {
     font-size: 0.9rem;
 }
 
-
 .footer-copyright {
     border-top: 1px solid #1a1a1a;
     padding-top: 20px;
@@ -564,8 +625,87 @@ footer {
     margin: 0;
 }
 
+/* ========================================================== */
+/* ==================== MEDIA QUERIES ======================= */
+/* =============== (AQUÍ ESTÁ LA MAGIA) ===================== */
+/* ========================================================== */
 
+/* Solo para PC y Tablets grandes (2 columnas en servicios) */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 Columnas exactas */
+    }
+}
+
+/* Solo para MÓVIL (Todo lo que se rompió, arreglado aquí) */
 @media (max-width: 768px) {
+
+    /* 1. HERO Y TEXTOS */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        background-attachment: scroll;
+    }
+
+    /* Arregla el fondo que desaparece */
+
+    /* 2. ROLES VERTICALES */
+    .hero-roles {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .role {
+        font-size: 1.3rem;
+        letter-spacing: 4px;
+    }
+
+    /* 3. LAYOUT GENERAL */
+    .container {
+        padding: 50px 20px;
+    }
+
+    /* 4. GALERÍA EN 1 COLUMNA */
+    .gallery {
+        column-count: 1;
+    }
+
+    /* 5. SECCIÓN SOBRE MÍ (Foto arriba, texto abajo) */
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-img {
+        max-width: 80%;
+        margin: 0 auto 30px auto;
+    }
+
+    .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* 6. COLORES EN MÓVIL (Sin hover) */
+    .img-box img,
+    .about-img img {
+        filter: grayscale(0%) brightness(1.1);
+        /* Todo color siempre */
+    }
+
+    .img-box {
+        border-color: rgba(226, 154, 60, 0.5);
+        /* Borde dorado suave */
+    }
+
+    /* 7. FOOTER MÓVIL */
     .footer-top {
         flex-direction: column;
         align-items: center;
@@ -583,61 +723,4 @@ footer {
     .footer-contact h4 {
         border-bottom: none;
     }
-}
-
-.video-item {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    border: 1px solid #333;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.video-link {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.video-link img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.5s;
-    filter: brightness(0.8);
-}
-
-.fix-zoom img {
-    transform: scale(1.35);
-    transform-origin: center;
-}
-
-.play-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(226, 154, 60, 0.8);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: #fff;
-    transition: 0.3s;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.video-link:hover img {
-    transform: scale(1.1);
-    filter: brightness(1);
-}
-
-.video-link:hover .play-icon {
-    background: var(--accent);
-    transform: translate(-50%, -50%) scale(1.2);
 }
